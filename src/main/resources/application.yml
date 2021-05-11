@@ -1,0 +1,40 @@
+### Spring DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: Kumar*140
+    url: jdbc:mysql://capstone-foodbox.crxvjz5mmt2s.us-east-1.rds.amazonaws.com/capstone?allowPublicKeyRetrival=true&useSSL=false
+    platform: mysql
+    initialization-mode: always
+    continue-on-error: false
+  jpa:
+    show-sql: false
+    #generate-ddl: false
+    hibernate:
+      ddl-auto: create
+    database: mysql
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false;
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+#      dialect: org.hibernate.dialect.MySQL5Dialect
+
+##  jackson:
+##    default-property-inclusion: non_null
+##  redis:
+##    host: localhost
+##    port: 6379
+##  freemarker:
+##      cache: false
+
+  queries:
+    users-query: select email, password, active from users where email=?
+    roles-query: select email, role from users where email=?
+server:
+  servlet:
+    contextPath: /api
+
+jwtSecret: me.zhulin
+jwtExpiration: 86400
